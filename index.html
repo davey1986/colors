@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Simple color picking website. Enjoy">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>IroIro</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="">IroIro</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+<!--           <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li> -->
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <section id="top">
+      <div class="container">
+      	<div class="row">
+      		<div class="col-lg-12 text-center">
+      			<p>Press spacebar to generate random color options. Copy the Hex code to get the color.
+      			</p>
+      			<hr class="full-line">
+      		</div>
+      	</div>
+      </div>
+    </section>
+
+<!--     <div class="container text-center" id="colors-main">
+      < !-- Top Row - ->
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4 main rounded-left-top">
+          <h2></h2>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 main">
+          <h2></h2>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 main rounded-right-top">
+          <h2></h2>
+        </div>
+<! --       </div>
+
+      <hr>
+      Bottom Row
+      <div class="row"> - ->
+        <div class="col-md-4 main rounded-left-bottom">
+          <h2></h2>
+        </div>
+        <div class="col-md-4 main">
+          <h2></h2>
+        </div>
+        <div class="col-md-4 main rounded-right-bottom">
+          <h2></h2>
+        </div>
+      </div>
+      </div>
+ -->
+ <div class="container text-center" id="colors-main">
+      <!-- Top Row -->
+      <div class="row">
+
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2>
+			    <br />
+			    <p class="unlock">unlocked</p>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2> 
+			    <br />
+			    <p class="unlock">unlocked</p>			    
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2>
+			    <br />
+			    <p class="unlock">unlocked</p>			    
+			  </div>
+			</div>
+		</div>
+
+      </div>
+
+      <div class="row">
+		
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2>
+			    <br />
+			    <p class="unlock">unlocked</p>			    
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2>
+			    <br />
+			    <p class="unlock">unlocked</p>			    
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">	
+			<div class="card main">
+			  <div class="container ">
+			    <h2></h2>
+			    <br />
+			    <p class="unlock">unlocked</p>
+			  </div>
+			</div>
+		</div>
+
+      </div>
+    
+      <footer>
+      	<div class="container">
+      		<div class="row">
+      			<div class="col-lg-12">
+      				<p class="text-center">&copy; IroIro <span id="date"></span></p>
+      			</div>
+      		</div>
+      	</div>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <script src="jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<script>
+		window.addEventListener("keypress", generate); 
+
+		function generate(event){		
+			if (event.which == 32) {
+				addColor();
+			} 
+		}
+
+		function generateColor() {
+			let hex = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F']
+			let color = '';
+			let i = 0;
+			while (i < 6) {
+				let count = Math.floor((Math.random() * 15) + 0);
+				color += hex[count];
+			  	i++;
+			}
+			return '#'+color;
+			
+		}
+
+		function addColor () {
+			let colorsMain = document.getElementById('colors-main');
+			let colorText = colorsMain.getElementsByTagName("h2");
+			let colorDiv = colorsMain.getElementsByClassName("main");
+			/* Loop through main div and add color, text.  */
+			for (var i = colorDiv.length; i--;) {
+				let para = colorDiv[i].getElementsByTagName('p');
+				if(para[0].getAttribute('class') == 'unlock') {
+					let color = generateColor();1
+				    colorText[i].innerHTML = color;
+				    colorDiv[i].style.backgroundColor  = color;	
+				}
+				addListnerEvent();
+			}
+		}
+
+		function addListnerEvent(){
+			let para = document.querySelectorAll("p");
+			for (var i = 0; i < para.length; i++) {
+			  	para[i].addEventListener("click", lockUnlockText);
+			}				
+		}
+
+		function lockUnlockText() {
+			this.classList.toggle("unlock");
+			if (this.innerHTML == 'locked') {
+				this.innerHTML = 'unlocked';
+			} else {
+				this.innerHTML = 'locked';
+			}
+		}
+
+	</script>
+
+	<script>
+		window.onload = function() {
+		  addColor();
+		  let date = new Date();
+		  document.getElementById('date').innerHTML = date.getFullYear();
+		};
+	</script>
+  </body>
+</html>
